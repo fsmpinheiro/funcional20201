@@ -68,8 +68,8 @@ unico u xs
 
 
 --Question 11
-maioresQue :: Int -&gt; [Int] -&gt; [Int]
-maioresQue u xs = [x | x &lt;- xs, x &gt; u]
+maioresQue :: Int -> [Int] -> [Int]
+maioresQue u xs = [x | x <- xs, x > u]
 
 --Question 12-a
 concat0 [] [] = []
@@ -98,8 +98,8 @@ unique (x:xs) = if x `elem` xs
 
 
 --Question 16
-menores :: Int -&gt; [Int] -&gt; [Int]
-menores n xs = [ys | ys &lt;- xs, ys &lt; n ]
+menores :: Int -> [Int] -> [Int]
+menores n xs = [ys | ys <- xs, ys < n ]
 
 
 --Question 17
@@ -108,17 +108,17 @@ alter a = alter (a - 1) ++ [a, (-a)]
 
 
 --Question 18
-revers0 :: [a] -&gt; [a]
+revers0 :: [a] -> [a]
 revers0 [ ] = [ ]
 revers0 [x] = [x]
 revers0 (x:xs) = (revers0 xs) ++ [x]
 
 
 --Question 19
---dividO :: [a] -&gt; Int -&gt; ([a],[a,b])
-dividO [] _ = ([],[])
-dividO xs 0 = ([], xs)
-dividO xs n = (a , b) 
+--dividO :: [a] -> Int -> ([a],[a,b])
+dividO [] _ = ( [], [] )
+dividO xs 0 = ( [], xs )
+dividO xs n = ( a, b ) 
         where 
             a = take n xs 
             b = drop n xs
@@ -141,22 +141,22 @@ uniones (x:xs) (y:ys) = if y `elem` xs
 interseciones [ ] ys = ys
 interseciones xs [ ] = xs
 interseciones xs ys = 
-            let zs = [ a | a &lt;- xs, elem a ys] in [ b | b &lt;- ys, elem b zs]
+            let zs = [ a | a <- xs, elem a ys] in [ b | b <- ys, elem b zs]
 
 
 --Question 23
-sequencias n m = [z | z &lt;- [m..(m + (n-1)) ]] 
+sequencias n m = [z | z <- [m .. (m + ( n - 1 ) ) ]] 
 
 
 --Question 24-a
 inserir0 n xs = r ++ [n] ++ t
-    where r = takeWhile (&lt; n) xs
-          t = dropWhile (&lt; n) xs
+    where r = takeWhile ( < n) xs
+          t = dropWhile ( < n) xs
 
 
 --Question 24-b
 inserir1 n [ ] = [n]
-inserir1 n (x:xs) =  if n &lt;= x
+inserir1 n (x:xs) =  if n <= x
     then n:x:xs
     else x : inserir1 n xs
 
@@ -164,22 +164,22 @@ inserir1 n (x:xs) =  if n &lt;= x
 --Question 25
 isSorteed [ ] = True
 isSorteed [_] = True
-isSorteed (x:n:xs) -- = if x &lt; n
-    | x &lt;= n = isSorteed (n:xs)
+isSorteed (x:n:xs) -- = if x < n
+    | x <= n = isSorteed (n:xs)
     | otherwise = False
 --    then = isSorteed n:xs
 --    else = False
 
 
 --Question 26
-queSorted :: (Ord a) =&gt; [a] -&gt; [a]
+queSorted :: (Ord a) => [a] -> [a]
 queSorted [] = []
 queSorted (x:xs) = a ++ [x] ++ b
-    where a = queSorted [n | n &lt;- xs, n &lt;= x]
-          b = queSorted [n | n &lt;- xs, n &gt; x]
+    where a = queSorted [n | n <- xs, n <= x]
+          b = queSorted [n | n <- xs, n > x]
 
 
 --Question 31
 selec1 [ ] _ = [ ]
-selec1 ys xs = [ ys !! i | i &lt;- xs , i &gt;= 0 &amp;&amp; i &lt; length ys]
+selec1 ys xs = [ ys !! i | i <- xs , i >= 0 && i < length ys]
 
