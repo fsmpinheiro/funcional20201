@@ -1,23 +1,23 @@
 --Question 01
-menorDeDois :: (Ord a) =&gt; a -&gt; a -&gt; a
-menorDeDois x y = if x &lt; y 
+menorDeDois :: (Ord a) => a -> a -> a
+menorDeDois x y = if x < y 
     then x 
     else y
 
 --Question 02
---menorDeTres :: (Ord b) =&gt; b -&gt; b -&gt; b -&gt; b
+--menorDeTres :: (Ord b) => b -> b -> b -> b
 menorDeTres z y x
-    | x &lt; y &amp;&amp; y &lt; z = x
-    | x &gt; y &amp;&amp; y &lt; z = y
+    | x < y && y < z = x
+    | x > y && y < z = y
     | otherwise = z
 
 --Question 03
-fatorial :: (Eq c, Num c) =&gt; c -&gt; c
+fatorial :: (Eq c, Num c) => c -> c
 fatorial 0 = 1
 fatorial x = x * fatorial (x-1)
 
 --Question 04
-fibonacci1 :: (Eq a, Num a, Num t) =&gt; a -&gt; t
+fibonacci1 :: (Eq a, Num a, Num t) => a -> t
 fibonacci1 0 = 0
 fibonacci1 1 = 1
 fibonacci1 n = fibonacci1 (n - 1) + fibonacci1 (n - 2)
@@ -31,7 +31,7 @@ nElemento c xs =   drop c (take (c + 1) xs)
 
 
 --Question 06
-pertence :: Eq t =&gt; t -&gt; [t] -&gt; Bool
+pertence :: Eq t => t -> [t] -> Bool
 pertence _ [ ] = False
 pertence c (x:xs)
     | c == x = True
@@ -39,31 +39,31 @@ pertence c (x:xs)
 
 
 --Question 07
-total :: Num a =&gt; [t] -&gt; a
-total xs = sum [ 1 | _ &lt;- xs]
+total :: Num a => [t] -> a
+total xs = sum [ 1 | _ <- xs]
 --total [] = 0
 --total (x:xs) = x + (total xs) -- soma dos elementos da lista
 --total (x:xs) = 1 + (total xs) -- quantidade de elementos na lista
 
 
 --Question 08
---maior :: Ord a =&gt; [a] -&gt; a
+--maior :: Ord a => [a] -> a
 maior [ ] = error "lista vazia seu vacilão!"
 maior [x] = x
-maior (f:x:xs) = if f &gt;= x 
+maior (f:x:xs) = if f >= x 
         then maior (f:xs)
         else maior (x:xs)
 
 
 --Question 09
 frequencia _ [ ] = 0
-frequencia u xs = sum [ 1 | x &lt;- xs, x == u]
+frequencia u xs = sum [ 1 | x <- xs, x == u]
 
 
 --Question 10
-unico :: Int -&gt; [Int] -&gt; Bool
+unico :: Int -> [Int] -> Bool
 unico u xs 
-    | sum [1 | x &lt;- xs, x == u ] == 1 = True
+    | sum [1 | x <- xs, x == u ] == 1 = True
     | otherwise = False
 
 
